@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/input.css" rel="stylesheet" />
+    <script src="./src/main.ts" type="module" defer></script>
+    <title>CELLDODGER</title>
+  </head>
+  <body>
+    <!-- whole screen -->
+    <div
+      id="main"
+      class="flex flex-col lg:flex-row w-screen h-screen px-4 py-2 gap-2 overflow-clip overscroll-none"
+    >
+      <!-- left column that contains settings -->
+      <div
+        id="settings"
+        class="flex flex-col lg:order-1 w-full h-full opacity-0 invisible lg:visible"
+      >
+        <div
+          id="settings-box"
+          class="flex m-auto align-items-center w-80 h-44 z-10"
+        >
+          <div class="flex flex-col w-full items-center px-6 py-4 gap-2">
+            <h2 class="italic font-bold text-2xl">SETTINGS</h2>
+            <div class="flex flex-col">
+              <div class="flex w-full justify-between">
+                <label class="w-[160px]">Number of Lives</label>
+                <input
+                  id="noLives"
+                  class="bg-slate-400 text-right"
+                  type="number"
+                  placeholder="3"
+                  value="3"
+                  min="1"
+                  max="6"
+                />
+              </div>
+              <div class="flex w-full justify-between">
+                <label class="w-[160px]">Number of Enemies</label>
+                <input
+                  id="noEnemies"
+                  class="bg-slate-400 text-right"
+                  type="number"
+                  placeholder="5"
+                  value="5"
+                  min="1"
+                  max="12"
+                />
+              </div>
+              <div class="flex w-full justify-between">
+                <label class="w-[160px] self-start">Number of Coins</label>
+                <input
+                  id="noCoins"
+                  class="bg-slate-400 text-right"
+                  type="number"
+                  placeholder="1"
+                  value="1"
+                  min="1"
+                  max="4"
+                />
+              </div>
+              <div class="flex w-full justify-between">
+                <label class="w-[160px] self-start">Game Speed</label>
+                <input
+                  id="gameSpeed"
+                  class="bg-slate-400 text-right"
+                  type="number"
+                  placeholder="300"
+                  value="300"
+                  min="50"
+                  max="600"
+                  step="50"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- center column that contains the grid -->
+      <div
+        id="center"
+        class="flex flex-col w-full h-full order-first lg:order-2"
+      >
+        <div class="my-auto">
+          <div id="ui-top" class="flex w-full justify-between">
+            <h1 class="italic font-bold text-2xl lg:text-3xl w-1/2">
+              CELL DODGER
+            </h1>
+            <div class="flex justify-end w-1/2 gap-2 p-1 lg:p-2">
+              <img
+                id="settings-icon"
+                src="./settings.svg"
+                class="cursor-pointer"
+              />
+              <img src="./settings-filled.svg" class="hidden" />
+              <img id="help-icon" src="./help.svg" class="cursor-pointer" />
+              <img src="./help-filled.svg" class="hidden" />
+            </div>
+          </div>
+          <div
+            id="grid-container"
+            class="relative grid align-items-center w-[calc(100vw)]) h-[calc(100vw)] lg:w-[calc(50vw)] lg:h-[calc(50vw)] bg-gridColor grid-rows-[repeat(20,1fr)] grid-cols-[repeat(20,1fr)]"
+          ></div>
+          <div id="ui-bottom" class="flex w-full justify-between">
+            <p class="italic font-bold text-lg lg:text-xl">
+              SCORE: <span id="score">0</span>
+            </p>
+            <div class="flex gap-2">
+              <p class="font-mono font-thin text-lg tracking-wide text-center">
+                <span id="console"></span>
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <p class="italic font-bold text-lg lg:text-xl text-right">
+                LIVES: <span id="lives">3</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- right column which contains the instructions -->
+      <div
+        id="instructions"
+        class="flex w-full h-full lg:order-3 opacity-0 z-10"
+      >
+        <div
+          id="instructions-box"
+          class="flex m-auto align-items-center w-80 h-44"
+        >
+          <div class="flex flex-col w-full items-center px-6 py-4 gap-2">
+            <h2 class="italic font-bold text-2xl">INSTRUCTIONS</h2>
+            <div class="flex w-full justify-center gap-4">
+              <img id="controlsSVG" class="w-24" src="./controls.svg" />
+              <img
+                id="touchControlsSVG"
+                class="w-24 hidden"
+                src="./touchcontrols.svg"
+              />
+              <p class="leading-tight">
+                <span id="controlsInstructions">
+                  Use the arrow keys to move the</span
+                >
+                <span class="text-playerColor font-bold">player</span>. Collect
+                <span class="text-coinColor font-bold">coins</span> and
+                <span class="text-heartColor font-bold">hearts</span>
+                while avoiding the
+                <span class="text-enemyColor font-bold">enemies</span>.
+              </p>
+            </div>
+            <div class="flex w-full justify-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
